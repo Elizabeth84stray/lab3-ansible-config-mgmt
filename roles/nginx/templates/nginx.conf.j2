@@ -1,0 +1,17 @@
+user {{ nginx_user }};
+worker_processes {{ worker_processes }};
+error_log /var/log/nginx/error.log warn;
+pid /var/run/nginx.pid;
+
+events {
+    worker_connections {{ worker_connections }};
+}
+
+http {
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+    sendfile on;
+    keepalive_timeout 65;
+    client_max_body_size {{ client_max_body_size }};
+    include /etc/nginx/sites-enabled/*;
+}
