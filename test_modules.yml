@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Test info module
+      info_module:
+        name: "Elizabeth"
+      register: info_result
+
+    - name: Show info result
+      debug:
+        var: info_result.message
+
+    - name: Test facts module
+      facts_module:
+      register: facts_result
+
+    - name: Show facts result
+      debug:
+        var: facts_result.ansible_facts
