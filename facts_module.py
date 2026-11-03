@@ -13,7 +13,8 @@ def main():
     module.exit_json(
         changed=False,
         ansible_facts=dict(
-            custom_os=platform.system()
+            custom_os=platform.system(),
+            custom_release=platform.release()
         )
     )
 
