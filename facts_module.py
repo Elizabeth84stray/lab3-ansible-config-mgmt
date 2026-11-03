@@ -6,6 +6,7 @@ Collects custom OS facts.
 """
 from ansible.module_utils.basic import AnsibleModule
 import platform
+import socket
 
 def main():
     module = AnsibleModule(argument_spec={})
@@ -14,7 +15,8 @@ def main():
         changed=False,
         ansible_facts=dict(
             custom_os=platform.system(),
-            custom_release=platform.release()
+            custom_release=platform.release(),
+            custom_hostname=soket.gethostname()
         )
     )
 
